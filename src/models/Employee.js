@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       primaryKey: true
     },
-    employeeID: {
+    employeeId: {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true
@@ -17,6 +17,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     }
+  },
+  {
+    indexes: [
+      {
+        unique: false,
+        fields: ['employee_id', 'organization']
+      }
+    ]
   });
 
   paginate(Employee);

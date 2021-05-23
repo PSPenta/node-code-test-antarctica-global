@@ -12,6 +12,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     }
+  },
+  {
+    indexes: [
+      {
+        unique: false,
+        fields: ['token']
+      }
+    ]
   });
 
   paginate(Blacklist);
