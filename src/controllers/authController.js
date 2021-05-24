@@ -20,7 +20,7 @@ exports.jwtLogin = async (req, res) => {
     if (userData.length && await compare(req.body.password, userData[0].password)) {
       token = sign(
         {
-          username: userData[0].username,
+          email: userData[0].email,
           userId: userData[0].id.toString()
         },
         jwt.secret,
