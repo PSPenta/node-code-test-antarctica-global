@@ -77,7 +77,7 @@ exports.register = async (req, res) => {
         await model('Employee').create({
           employeeId: uniqueEmployeeID(),
           organization: req.body.organization,
-          user
+          user_id: user.id
         });
         return res.status(201).json(responseMsg(null, true, { message: 'User added successfully!' }));
       }
