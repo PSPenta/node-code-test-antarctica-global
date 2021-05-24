@@ -2,7 +2,7 @@
 const { compare, hash } = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { sign } = require('jsonwebtoken');
-const { generate: uniqueEmployeeID } = require('shortid');
+const { v4: uuidv4 } = require('uuid');
 
 const { model } = require('../config/dbConfig');
 const { jwt } = require('../config/serverConfig');
@@ -75,7 +75,7 @@ exports.register = async (req, res) => {
 
       if (user) {
         await model('Employee').create({
-          employeeId: uniqueEmployeeID(),
+          employeeId: uuidv4(),
           organization: req.body.organization,
           user_id: user.id
         });
